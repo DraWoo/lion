@@ -26,33 +26,26 @@
     <!--<title th:text="${title}">공통 코드HTML</title>-->
 </head>
 <body>
-<header class="p-3 bg-dark text-white">
-    <div class="container" th:fragment="menu">
+<nav class="p-3 bg-dark text-white" th:fragment="menu">
+    <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                 <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
                     <use xlink:href="#bootstrap"/>
                 </svg>
             </a>
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/images/lion.png" width="43px;" height="46px;">
-            </a>
-        </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="/images/lion.png" width="43px;" height="46px;">
+                </a>
+            </div>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <!--<li><a href="#" class="nav-link px-2 text-white">Features</a></li>-->
-                <!--/*@thymesVar id="proastart" type="images"*/-->
-                <!--/*@thymesVar id="menu" type="ch"*/-->
-     <li class="nav-item" >
-                    <a href="" class="nav-link px-2 text-white">Lion<span class="sr-only" >(current)</span></a>
+                <li class="nav-item">
+                    <a href="" class="nav-link px-2 text-white">Lion</a>
                 </li>
-                <!--<li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>-->
-      <li  class="nav-item" ><a href="#" class="nav-link px-2 text-white">게시판
-                    <span class="sr-only" >(current)</span>
-                </a>
-            </li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">게시판</a>
+                </li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -61,15 +54,14 @@
             </form>
 
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Login</button>
-                <button type="button" class="btn btn-warning">Sign-up</button>
+                <button type="button" class="btn btn-outline-light me-2">로그인</button>
+                <button type="button" class="btn btn-warning">회원가입</button>
             </div>
         </div>
     </div>
-</header>
-<!-- <div th:fragment="copy">
-        &copy; Copyright ⓒ 2021. Lion.
-
-    </div>     -->
+</nav>
+<!--<div th:fragment="copy">
+    &copy; 2011 The Good Thymes Virtual Grocery
+</div>-->
 </body>
 </html>

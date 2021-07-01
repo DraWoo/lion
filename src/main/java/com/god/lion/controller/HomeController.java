@@ -14,5 +14,6 @@ public class HomeController {
     //여기서 템플릿 엔진 thymeleaf 파일을 지정해준다 어디로 보낼지 설정
         return "index";
 
+
     }
 }
