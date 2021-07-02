@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--//thymeleaf 선언-->
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"><!--// namespace-->
-<head > <!--공통html 코드에서 파라미터값을 받아오면 됨-->
+<head> <!--공통html 코드에서 파라미터값을 받아오면 됨-->
     <!--th:replace="fragment/common :: head('게시판')"-->
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -33,10 +33,10 @@
 <body>
 <main>
 
-    <header class="p-3 bg-dark text-white">
-        <div class="container"  th:replace="/fragment/common :: menu">
+    <nav class="p-3 bg-dark text-white"   th:replace="/fragment/common :: menu">
+        <div class="container">
         </div>
-    </header>
+    </nav>
 
 </main>
          <div class="container">
