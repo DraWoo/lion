@@ -41,17 +41,28 @@
 </main>
          <div class="container">
              <h2>Lion 게시판</h2>
+             <!--@{/greeting} : 처리할 URL
+            ${greeing} : model형태로 넘길 object
+            th:text 보다는 th:field를 써야 object매핑-->
              <!--@{/board/form}으로 post 요청을 해줌 th:object="${board}를 사용한다고 선언을 해줌-->
              <form action="#" th:action="@{/board/form}" th:object="${board}" method="post"> <!--Getmapping에서 전달받은 board를 th:object에 넣어준다-->
                  <input type="hidden" th:field="*{id}"><!--input type="hidden"은 사용자에게 노출할 필요가 없을때 사용한다-->
                  <div class="form-group">
                      <label for="title">제목</label>
                      <!--board에 어떤 속성을 사용할지 결정 ->th:field="*{title}를 사용-->
-                     <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="제목을 입력해주세요!!">
+                     <input type="text" class="form-control"
+                            th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title" th:field="*{title}" placeholder="제목을 입력해주세요!!"/>
+                     <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+                         입력하신 제목은 유효하지 않습니다.
+                     </div>
                  </div>
                  <div class="form-group">
                      <label for="content">글 내용</label> <!--content에 해당하는 id를 작성한다고 알려주는 구문-->
-                     <textarea class="form-control" id="content" rows="3" th:field="*{content}" placeholder="내용을 입력해주세요"></textarea>
+                     <textarea class="form-control"
+                               th:classappend="${#fields.hasErrors('content')} ? 'is-invalid'" id="content" rows="3"  th:field="*{content}" placeholder="내용을 입력해주세요"></textarea>
+                     <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
+                         입력하신 내용은 유효하지 않습니다.
+                     </div>
                  </div>
                  <!--글 쓰기 버튼-->
                  <div class="btn-left">

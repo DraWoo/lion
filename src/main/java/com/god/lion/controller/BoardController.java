@@ -6,8 +6,10 @@ import com.god.lion.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -36,14 +38,16 @@ public class BoardController {
             Board board = boardRepository.findById(id).orElse(null);//findById로 조회한 아이디가 없을수도 있기때문에 이 경우에는 .orElse로 (null)주면 된다.
             model.addAttribute("board", board);
         }
-
         model.addAttribute("board", new Board());
         return "board/form";
     }
 //  PostMapping 으로 form 태그를 받아옴
     //글 저장
     @PostMapping("/form")
-    public String greetingSubmit(@ModelAttribute Board board){
+    public String greetingSubmit(@Valid Board board, BindingResult bindingResult){ //model 클래스에서 지정한 사이즈가 min2 -> max30 에 부합되지 않는다면 true,false 결과 도출
+        if (bindingResult.hasErrors()){
+            return "board/form";
+        }
         boardRepository.save(board);//jpa api-> save(메소드) ->저장 board로 전달
         return "redirect:/board/list";// return "redirect:board/list"; 해주면 다시 조회하면으로 이동해서 조회를 하게 해준다
     }

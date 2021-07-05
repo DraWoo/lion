@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /*DB 연동을 위한 model 클래스*/
 @Entity//jpa 설정을 위해서 어노테이션 추가
@@ -16,6 +18,9 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
+    @NotNull
+    //글자수 제한을 걸어주는 어노테이션
+    @Size(min = 2, max = 30)
     private String title;
     private String content;
 
