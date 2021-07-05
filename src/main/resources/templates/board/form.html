@@ -41,41 +41,6 @@
 </main>
          <div class="container">
              <h2>Lion 게시판</h2>
-             <div>총 건수 : <span th:text="${#lists.size(boards)}"></span>
-             </div>
-             <table class="table table-striped">
-                 <thead>
-                 <tr id="table__boarder">
-                     <th scope="col">번호</th>
-                     <th scope="col">제목</th>
-                     <th scope="col">작성자</th>
-                 </tr>
-                 </thead>
-                 <tbody>
-                 <!--리스트를 뿌리기 위해서 foreach for문을 돌려줌 dB에서 받아옴-->
-                 <tr th:each="board : ${boards}">
-                     <td th:text="${board.id}">Mark</td>
-                     <td th:text="${board.title}">Otto</td>
-                     <td>Lion</td>
-                 </tr>
-               <!--  <tr>
-                     <th scope="row">2</th>
-                     <td>Jacob</td>
-                     <td>Thornton</td>
-                     <td>@fat</td>
-                 </tr>
-                 <tr>
-                     <th scope="row">3</th>
-                     <td>the Bird</td>
-                     <td>the Bird</td>
-                     <td>@twitter</td>
-                 </tr>-->
-                 </tbody>
-             </table>
-             <!--글 쓰기 버튼-->
-             <div class="text-right">
-                <button type="button" class="btn btn-outline-primary">글 쓰기</button>
-             </div>
          </div>
 
 </body>
