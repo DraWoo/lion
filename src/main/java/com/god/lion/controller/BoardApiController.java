@@ -30,10 +30,10 @@ class BoarAPiController {
     //제목과 내용 검색(검색조건이 -> 두개 일경우)
     List<Board> all(@RequestParam(required = false, defaultValue = "") String title
         ,@RequestParam(required = false,defaultValue = "") String content) {
-        if(StringUtils.isEmpty(title)){
+        if(StringUtils.isEmpty(title) && StringUtils.isEmpty(content)){
             return repository.findAll();
         }else {
-            return repository.findByTitle(title);
+            return repository.findByTitleOrContent(title,content);
         }
     }
 

@@ -1,0 +1,107 @@
+/* common_css */
+
+/* body->style */
+.container{
+    margin: 0% auto;
+    /* font-적용 */
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #1d1f47;
+}
+nav{
+    /*마우스가 디폴트 값이다가 해당 메뉴에 올라가면 손가락 모양으로 바뀐다*/
+    cursor: pointer;
+
+}
+/*메뉴바 간격 조정*/
+.nav-item{
+    padding: 2px 18px;
+    margin: 0 4px;
+    border-radius: 4px;
+
+}
+/*마우스 hover 설정*/
+.nav-item:hover{
+    background-color: #ffc107;
+
+}
+/*마우스가 올라갈때 글씨 색상 변경 추후에 도전*/
+/*.nav-link.text-white:hover{color: black;}*/
+
+.nav-item.active{
+    /*네비 메뉴에서 활성화인 메뉴-> style 설정*/
+    border: 1px solid white;
+}
+/*글 쓰기 버튼 오른쪽 정렬*/
+.btn-right{
+    text-align: right;
+
+}
+/*제목 스타일링*/
+#title__style{
+    text-decoration: none;
+}
+.btn-left{
+    padding-top: 30px;
+    text-align: center;
+
+}
+/*테이블 상단 선 긋기*/
+#table__boarder{
+    border: 1px solid #ebeaea;
+}
+/* 상단 게시판 제목 패딩값 적용*/
+h2{
+    padding: 20px 0;
+}
+/*글쓰기 영역 제목 영역 설정*/
+.form-group{
+    padding:20px 0;
+}
+
+/* Navbar */
+/*
+#navbar{
+    !* 컨테이너의 디스플레이는 flex박스 *!
+    display: flex;
+    !* 정렬은 가로 정렬로 양사이드를 떨어뜨려서 *!
+    justify-content: space-between;
+    !* Navbar 배경색은  *!
+    background-color: #1d1f47;
+    color: rgb(255, 254, 253);
+    !* 가로정렬된 상태에서 박스안의 컨텐츠를 가운데로 정렬하기 *!
+    align-items: center;
+    padding: 16px;
+
+}
+.navbar__logo{
+    !* logo size 설정 *!
+    width: 45px;
+    height: 47px;
+    font-size: medium;
+    font-weight: bold;
+}
+a{
+    !* anchor tag기본적인 라인 스타일링 *!
+    text-decoration: none;
+    color: white;
+}
+ul{
+    !* another list 기본적인 라인 스타일링 *!
+    !* another list 기본값으로 패딩값이 40px 들어가 있다  *!
+    list-style: none;
+    padding-left: 0%;
+}
+
+!* Navbar 메뉴를 한줄로 정렬하기 *!
+.navbar__menu{
+    display: flex;
+    
+
+}
+
+.navbar__menu_item{
+    !* 간격이 붙어 있으니 간격조정 *!
+    padding: 6px 12px;
+    margin: 0 4px;
+}*/
