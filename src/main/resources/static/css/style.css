@@ -22,16 +22,15 @@ nav{
 }
 /*마우스 hover 설정*/
 .nav-item:hover{
-    background-color: #ffc107;
+
+    border: 1px solid white;
+    /*background-color: #ffc107;*/
 
 }
+.nav-item a:hover{color: #1d1f47}
 /*마우스가 올라갈때 글씨 색상 변경 추후에 도전*/
 /*.nav-link.text-white:hover{color: black;}*/
 
-.nav-item.active{
-    /*네비 메뉴에서 활성화인 메뉴-> style 설정*/
-    border: 1px solid white;
-}
 /*글 쓰기 버튼 오른쪽 정렬*/
 .btn-right{
     text-align: right;

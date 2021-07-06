@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="fragment/common :: head">
+
 
 </head>
 <title>Hello!! Lion!!</title>
@@ -10,44 +10,77 @@
 
     <nav class="p-3 bg-dark text-white" th:replace="fragment/common.html :: menu">
 
-     <!--   <div class="container" th:fragment="menu">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                        <use xlink:href="#bootstrap"/>
-                    </svg>
-                </a>
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                        <img alt="Brand" src="/images/lion.png" width="43px;" height="46px;">
-                    </a>
+
+    </nav>
+   <!-- <div class="container__login" id="container__login">
+        <div class="form-container sign-up-container">
+            <form>
+                <h1>Sign Up</h1>
+                <div class="social-container">
+                    <a href="https://github.com/DraWoo" class="social"><img src="/test/img/github_33030.png" alt=""></a>
+                    <a href="https://google.com" class="social"><img src="/test/img/30_30.png" alt=""></a>
+                    <a href="https://blog.naver.com/mire256" class="social"><img src="/test/img/naver_30_30.png" alt=""></a>
                 </div>
-
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li class="nav-item">
-                        <a href="" class="nav-link px-2 text-white">Lion</a>
-                    </li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white">게시판</a>
-                    </li>
-                </ul>
-
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" class="form-control form-control-dark" placeholder="Search..."
-                           aria-label="Search">
-                </form>
-
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">로그인</button>
-                    <button type="button" class="btn btn-warning">회원가입</button>
+                <span>or use your email for registration</span>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button onclick="return false;">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form>
+                <h1>Sign In</h1>
+                <div class="social-container">
+                    <a href="https://github.com/DraWoo" class="social"><img src="/test/img/github_33030.png" alt=""></a>
+                    <a href="https://google.com" class="social"><img src="/test/img/30_30.png" alt=""></a>
+                    <a href="https://blog.naver.com/mire256" class="social"><img src="/test/img/naver_30_30.png" alt=""></a>
+                </div>
+                <span>or use your account</span>
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <a href="#">Forgot your password?</a>
+                <button onclick="return false;">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Welcome to LionWorld</h1>
+                    <p>Enter your personal details and start your journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
                 </div>
             </div>
-        </div>-->
-    </nav>
-    <!--컨텐츠 영역-->
-   <!-- <div>
+        </div>
+    </div>
 
-        <h3>라이언 홈</h3>
-    </div>-->
+
+    <footer>
+        <p>
+            Form made by: <a href="https://github.com/DraWoo" target="_blank">Lion</a>
+        </p>
+    </footer>
+
+    </div>
+    <script type="text/javascript">
+        const signUpButton = document.getElementById("signUp");
+        const signInButton = document.getElementById("signIn");
+        const container = document.getElementById("container");
+
+        signUpButton.addEventListener("click", () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener("click", () => {
+            container.classList.remove("right-panel-active");
+        });
+
+    </script>-->
 
 </body>
 

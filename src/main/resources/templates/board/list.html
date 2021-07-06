@@ -43,7 +43,7 @@
 </main>
          <div class="container">
              <h2>Lion 게시판</h2>
-             <div>총 건수 : <span th:text="${#lists.size(boards)}"></span>
+             <div>총 건수 : <span th:text="${boards.totalElements}"></span>
              </div>
              <table class="table table-striped">
                  <thead>
@@ -74,6 +74,20 @@
                  </tr>-->
                  </tbody>
              </table>
+             <nav aria-label="Page navigation example">
+                 <ul class="pagination justify-content-center">
+                     <li class="page-item"  th:classappend="${1 == boards.pageable.pageNumber + 1} ? 'disabled'">
+                         <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
+                     </li>
+                     <!--페이징 처리 th:each=""i(index)-->
+                     <li class="page-item" th:classappend="${i == boards.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                         <a class="page-link" href="#" th:text="${i}">1</a>
+                     </li>
+                     <li class="page-item" th:classappend="${boards.totalPages == boards.pageable.pageNumber + 1} ? 'disabled'">
+                         <a class="page-link" href="#">다음</a>
+                     </li>
+                 </ul>
+             </nav>
              <!--글 쓰기 버튼-->
              <div class="btn-right">
              <!-- 글 쓰기 버튼을 눌렀을시 -> form.html로 이동할 수 있게 만들어줌-BoardController 에서 GetMapping해서 return해준 "/board/form"주소를 써준다-->
