@@ -3,6 +3,7 @@ package com.god.lion.controller;
 
 import com.god.lion.model.Board;
 import com.god.lion.repository.BoardRepository;
+import com.god.lion.validator.BoardValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,10 @@ public class BoardController {
 
     @Autowired //생성자 초기화
     private BoardRepository boardRepository;
+
+//    유효성 검사 클래스(BoardValidator)을 사용하기 위한 클래스 선언
+    @Autowired
+    private BoardValidator boardValidator;  //스프링부트가 구동될때 어노테이션 @AutoWired를 통해 인스턴스가 담기게 된다.
 
 
     //게시판 조회
@@ -38,13 +43,13 @@ public class BoardController {
             Board board = boardRepository.findById(id).orElse(null);//findById로 조회한 아이디가 없을수도 있기때문에 이 경우에는 .orElse로 (null)주면 된다.
             model.addAttribute("board", board);
         }
-        model.addAttribute("board", new Board());
         return "board/form";
     }
 //  PostMapping 으로 form 태그를 받아옴
     //글 저장
     @PostMapping("/form")
     public String greetingSubmit(@Valid Board board, BindingResult bindingResult){ //model 클래스에서 지정한 사이즈가 min2 -> max30 에 부합되지 않는다면 true,false 결과 도출
+        boardValidator.validate(board, bindingResult);
         if (bindingResult.hasErrors()){
             return "board/form";
         }

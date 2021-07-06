@@ -48,7 +48,7 @@
              <form action="#" th:action="@{/board/form}" th:object="${board}" method="post"> <!--Getmapping에서 전달받은 board를 th:object에 넣어준다-->
                  <input type="hidden" th:field="*{id}"><!--input type="hidden"은 사용자에게 노출할 필요가 없을때 사용한다-->
                  <div class="form-group">
-                     <label for="title">제목</label>
+                     <label for="title" id="title__padding">제목</label>
                      <!--board에 어떤 속성을 사용할지 결정 ->th:field="*{title}를 사용-->
                      <input type="text" class="form-control"
                             th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'" id="title" th:field="*{title}" placeholder="제목을 입력해주세요!!"/>

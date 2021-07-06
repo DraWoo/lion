@@ -20,7 +20,8 @@ public class Board {
     private Long id;
     @NotNull
     //글자수 제한을 걸어주는 어노테이션
-    @Size(min = 2, max = 30)
+    //@Size(min = 2(최소), max = 30(최대), message(유효성메세지) = "제목은 2자이상 30자 이하입니다." )
+    @Size(min = 2, max = 30, message = "제목은 2자이상 30자 이하입니다." )
     private String title;
     private String content;
 
