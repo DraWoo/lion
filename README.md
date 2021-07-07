@@ -15,3 +15,4 @@
 ->validator
 #DB -> MariaDB
 #에디터 -> intelliJ IDE
+#DB viewer ->HeidSQL
