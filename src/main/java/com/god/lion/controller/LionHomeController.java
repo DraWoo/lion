@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class LionHomeController {
 
     //웹서버에 접속을 하게되면 기본적으로 getmapping가 있는 메소드를 호출하게됨
 
