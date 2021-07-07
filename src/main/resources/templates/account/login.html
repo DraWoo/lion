@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/login.css">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+    <!-- favico img  -->
+    <link rel="icon" th:href="@{/images/draWoo.ico}">
     <!-- fontawesome 링크 -->
+    <!--js 링크-->
+    <!--<script type="text/javascript" th:src="@{/js/element.js}"></script>-->
+
     <!-- <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> -->
-    <title>Document</title>
+    <title>Lion_login</title>
 </head>
 <body>
 
-<div class="container" id="container">
+<div class="container__login" id="container__login">
+    <!--회원가입 form태그-->
     <div class="form-container sign-up-container">
         <form>
             <h1>Sign Up</h1>
@@ -31,9 +37,9 @@
         <form>
             <h1>Sign In</h1>
             <div class="social-container">
-                <a href="https://github.com/DraWoo" class="social"><img src="/test/img/github_33030.png" alt=""></a>
-                <a href="https://google.com" class="social"><img src="/test/img/30_30.png" alt=""></a>
-                <a href="https://blog.naver.com/mire256" class="social"><img src="/test/img/naver_30_30.png" alt=""></a>
+                <a href="https://github.com/DraWoo" class="social"><img src="/images/github_33030.png" alt=""></a>
+                <a href="https://google.com" class="social"><img src="/images/30_30.png" alt=""></a>
+                <a href="https://blog.naver.com/mire256" class="social"><img src="/images/naver_30_30.png" alt=""></a>
             </div>
             <span>or use your account</span>
             <input type="email" placeholder="Email" />
@@ -42,6 +48,7 @@
             <button onclick="return false;">Sign In</button>
         </form>
     </div>
+    <!--회원가입 영역 텍스트-->
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-left">
@@ -65,11 +72,11 @@
     </p>
 </footer>
 
-</div>
-<script type="text/javascript">
+
+<script type="text/javascript" th:inline="javascript">
     const signUpButton = document.getElementById("signUp");
     const signInButton = document.getElementById("signIn");
-    const container = document.getElementById("container");
+    const container = document.getElementById("container__login");
 
     signUpButton.addEventListener("click", () => {
         container.classList.add("right-panel-active");
@@ -80,6 +87,7 @@
     });
 
 </script>
+
 
 </body>
 </html>
