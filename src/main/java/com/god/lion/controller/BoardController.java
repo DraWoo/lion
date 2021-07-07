@@ -14,8 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
+//뷰에 맵핑에서 전달해주는 컨트롤러 클래스
 @Controller
 @RequestMapping("/board")//localhost:8080/board 경로 지정
 public class BoardController {
@@ -23,23 +23,30 @@ public class BoardController {
     @Autowired //생성자 초기화
     private BoardRepository boardRepository;
 
-//    유효성 검사 클래스(BoardValidator)을 사용하기 위한 클래스 선언
+    //    유효성 검사 클래스(BoardValidator)을 사용하기 위한 클래스 선언
     @Autowired
     private BoardValidator boardValidator;  //스프링부트가 구동될때 어노테이션 @AutoWired를 통해 인스턴스가 담기게 된다.
 
 
-    //게시판 조회
+    //게시판 조회(검색영역)
     @GetMapping("/list")
     //@PageableDefault(size = 5)->  한 페이지에 보여질 데이터 개수 표시
-    public String list(Model model, @PageableDefault(size = 5) Pageable pageable){
+    //searchText가 null값이라 에러가 난다면, @RequestParam을 이용해서 기본값을 설정해주면 된다.
+    public String list(Model model, @PageableDefault(size = 5) Pageable pageable,
+                       @RequestParam(required = false, defaultValue = "") String searchText){
+
         //PageRequest.of(1,20) -> jpa 페이징 처리 (returnType ->List<T>가 아니라 Page<T>로 해주면 된다.
-        Page<Board> boards = boardRepository.findAll(pageable); //jpa api-> find all(메소드) ->전체조회
+        //Page<Board> boards = boardRepository.findAll(pageable); //jpa api-> find all(메소드) ->전체조회
+        Page<Board> boards = boardRepository.findByTitleOrContentContaining(searchText, searchText, pageable); //검색
+
         //페이징 처리
         int startPage = Math.max(1, boards.getPageable().getPageNumber() -4);
         int endPage = Math.min(boards.getTotalPages(), boards.getPageable().getPageNumber() +4);
+
         /*boards.getPageable().getPageNumber() 현재 페이지를 알려주는 구문*/
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
+
         //전체개수를 총 게시글 확인
         /*boards.getTotalElements();view에 적용전 디버깅해서 미리 확인 후 적용*/
         model.addAttribute("boards", boards);//글 저장을 하려면 model에 key 값이 있어야 한다
@@ -58,7 +65,7 @@ public class BoardController {
         }
         return "board/form";
     }
-//  PostMapping 으로 form 태그를 받아옴
+    //  PostMapping 으로 form 태그를 받아옴
     //글 저장
     @PostMapping("/form")
     //model 클래스에서 지정한 사이즈가 min2 -> max30 에 부합되지 않는다면 true,false 결과 도출
@@ -74,4 +81,3 @@ public class BoardController {
     }
 
 }
-

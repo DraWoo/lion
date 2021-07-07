@@ -37,7 +37,7 @@ public class BoardValidator implements Validator {
         //content(내용)이 비워있는지 확인
         if (StringUtils.isEmpty(b.getContent())){
             errors.rejectValue("content", "key", "내용을 입력해주세요!!!!!");//key값이 없을경우 3번째 파라미터에서 내용을 적어줄 수 있다.
-            
+
         }
 
     }

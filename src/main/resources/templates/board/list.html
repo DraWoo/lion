@@ -43,8 +43,20 @@
 </main>
          <div class="container">
              <h2>Lion 게시판</h2>
-             <div>총 건수 : <span th:text="${boards.totalElements}"></span>
-             </div>
+             <!--search form 설정-->
+             <div>총 건수 : <span th:text="${boards.totalElements}"></span></div>
+             <!--form 태그 사용 시, 해당 경로로 요청을 보낼 때 사용. (url)때문에 알아서 searchText 파라미터가 전달이 된다 -->
+                 <form class="row g-3 d-flex justify-content-end" method="GET" th:action="@{/board/list}">
+                     <div class="col-auto">
+                         <label for="searchText" class="visually-hidden">검색</label>
+                         <!--th:value="${param.searcgText} -> 원하는 변수값을 담기위한 th구문-->
+                         <input type="text" class="form-control" id="searchText" name="searchText" th:value="${param.searchText}" placeholder="검색어를 입력해주세요!!">
+                     </div>
+                     <div class="col-auto">
+                         <button type="submit" class="btn btn-outline-dark mb-3" id="search__btn">검색</button>
+                     </div>
+                 </form>
+
              <table class="table table-striped">
                  <thead>
                  <tr id="table__boarder">
@@ -77,14 +89,19 @@
              <nav aria-label="Page navigation example">
                  <ul class="pagination justify-content-center">
                      <li class="page-item"  th:classappend="${1 == boards.pageable.pageNumber + 1} ? 'disabled'">
-                         <a class="page-link" href="#" tabindex="-1" aria-disabled="true">이전</a>
+                         <!--th:href="@{/board/list[게시판의 리스트 페이지 링크를 걸어주고(page[페이지 설정]=${boards.pageable.pageNumber[현재페이지] - 1->이전 페이지로 이동 -->
+                         <!--검색을 하면 검색을 전달을 안하고 있기때문에 그 부분을 searchText=${param.searcgText} 추가해줘서 해결-->
+                         <!--이전 페이지-->
+                         <a class="page-link" href="#" th:href="@{/board/list(page=${boards.pageable.pageNumber - 1},searchText=${param.searcgText})}" tabindex="-1" aria-disabled="true">이전</a>
                      </li>
                      <!--페이징 처리 th:each=""i(index)-->
+                     <!--실제 보고있는 페이지-->
                      <li class="page-item" th:classappend="${i == boards.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
-                         <a class="page-link" href="#" th:text="${i}">1</a>
+                         <a class="page-link" href="#" th:href="@{/board/list(page=${i - 1},searchText=${param.searcgText})}" th:text="${i}">1</a>
                      </li>
+                     <!--다음페이지-->
                      <li class="page-item" th:classappend="${boards.totalPages == boards.pageable.pageNumber + 1} ? 'disabled'">
-                         <a class="page-link" href="#">다음</a>
+                         <a class="page-link" href="#" th:href="@{/board/list(page=${boards.pageable.pageNumber + 1},searchText=${param.searcgText})}">다음</a>
                      </li>
                  </ul>
              </nav>
