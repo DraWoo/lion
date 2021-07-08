@@ -51,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery("select username, name "     //이부분 쿼리에 manyToMany 다대다 조인쿼리를 작성해주면된다.
                         + "from user_role ur inner join user u on ur.user_id = u.id "
                         + "inner join role r on ur.role_id - r.id "
-                        + "where email = ?");
+                        + "where username = ?");
     }
     @Bean
     public PasswordEncoder passwordEncoder(){

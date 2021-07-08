@@ -13,5 +13,4 @@ public class AccountController {
     public String login(){
         return "account/login";
     }
-
 }
