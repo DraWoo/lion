@@ -23,9 +23,14 @@ public class AccountController {
     
     //회원가입 페이지
     @GetMapping("/register")
-    public String register(User user){ //회원가입을 받아주기 위해 user 클래스를 적어서 담아준다
-        userService.save(user);
+    public String register(){ //회원가입을 받아주기 위해 user 클래스를 적어서 담아준다
         return "account/register";
+    }
+
+    @PostMapping("register")
+    public String register(User user){
+        userService.save(user);
+        return "redirect:/";//홈으로 이동
     }
     
 }
