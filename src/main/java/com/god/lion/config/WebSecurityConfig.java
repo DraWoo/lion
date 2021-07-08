@@ -44,14 +44,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
-                .usersByUsernameQuery("select username,password,enabled "   //select username,password,enabled(여백이 중요함 쿼리문 뒷에 여백하나 필수)이유는 그래야 where 절과 붙지 않는다 "  ->반드시 이순서대로 select문을 구성
+                .usersByUsernameQuery("select username, password, enabled "   //select username,password,enabled(여백이 중요함 쿼리문 뒷에 여백하나 필수)이유는 그래야 where 절과 붙지 않는다 "  ->반드시 이순서대로 select문을 구성
                         + "from user "
                         + "where username = ?")
                 //조인 쿼리가 들어가면 데이터 무결성의 성립이 되지만,성능에 불이익이 단점이다.
-                .authoritiesByUsernameQuery("select username, name "     //이부분 쿼리에 manyToMany 다대다 조인쿼리를 작성해주면된다.
+                .authoritiesByUsernameQuery("select u.username, r.name "     //이부분 쿼리에 manyToMany 다대다 조인쿼리를 작성해주면된다.
                         + "from user_role ur inner join user u on ur.user_id = u.id "
-                        + "inner join role r on ur.role_id - r.id "
-                        + "where username = ?");
+                        + "inner join role r on ur.role_id = r.id "
+                        + "where u.username = ?");//여러테이블을 조인을 했기 때문에 user table에 별칭u를 붙여준다.
     }
     @Bean
     public PasswordEncoder passwordEncoder(){
