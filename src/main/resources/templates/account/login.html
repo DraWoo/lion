@@ -33,9 +33,8 @@
             crossorigin="anonymous"></script>
 
 </head>
-<title>Lion_Login</title>
+<title>로그인Page</title>
 <body>
-    <form th:action="@{/account/register}" method="post">
         <div class="wrapper fadeInDown">
             <div id="formContent">
                 <!-- 유효하지않는 아이디와 패스워드 입력시 에러 경고창 start -->
@@ -47,12 +46,12 @@
                     You have been logged out.
                 </div>
                 <!-- 유효하지않는 아이디와 패스워드 입력시 에러 경고창 end -->
-                <form>
+                <form th:action="@{/account/login}" method="post">
                     <label for="username"></label>
                     <input type="text" id="username" name="username" class="fadeIn second" placeholder="username">
                     <label for="password"></label>
                     <input type="text" id="password"  name="password" class="fadeIn third" placeholder="password">
-                    <input type="submit" class="fadeIn fourth" value="Log In">
+                    <input type="submit" class="fadeIn fourth" value="로그인">
                 </form>
 
                 <!-- Remind Passowrd -->
@@ -62,8 +61,7 @@
 
             </div>
         </div>
-        <p class="login_footer">Form made by: Lion</p>
-    </form>
+        <p class="login_footer">From made by: Lion</p>
 
 
 

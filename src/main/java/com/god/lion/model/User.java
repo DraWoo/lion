@@ -3,8 +3,8 @@ package com.god.lion.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
-import com.god.lion.model.Role;
 /*-----------------------------------------------------
 * Program : model class
 * Author  : Loin
@@ -41,7 +41,8 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),//현재 테이블
             inverseJoinColumns = @JoinColumn(name = "role_id")//조인할 상대 테이블
     )
-    private List<Role> roles;
+    //new ArrayList<>();-> 이부분을 생성해주는 이유는 기본적으로 생성하게 되면 nullpointerexception 생기기 때문에 기본적으로 해주면된다.
+    private List<Role> roles = new ArrayList<>();//roles 멤버변수 생성
 
 }
 

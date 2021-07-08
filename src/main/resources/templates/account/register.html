@@ -33,31 +33,29 @@
             crossorigin="anonymous"></script>
 
 </head>
-<title>Lion_Login</title>
+<title>회원가입Page</title>
 <body>
-    <form th:action="@{/account/login}" method="post">
-        <div class="wrapper fadeInDown">
-            <div id="formContent">
-                <!-- 유효하지않는 아이디와 패스워드 입력시 에러 경고창 start -->
-                <h2 class="inactive underlineHove active">Sign Up </h2>
-                <!-- 유효하지않는 아이디와 패스워드 입력시 에러 경고창 end -->
-                <form>
-                    <label for="username"></label>
-                    <input type="text" id="username" name="username" class="fadeIn second" placeholder="username">
-                    <label for="password"></label>
-                    <input type="text" id="password"  name="password" class="fadeIn third" placeholder="password">
-                    <input type="submit" class="fadeIn fourth" value="Log In">
-                </form>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- 유효하지않는 아이디와 패스워드 입력시 에러 경고창 start -->
+        <h2 class="active"> Sign Up </h2>
 
-                <!-- Remind Passowrd -->
-                <div id="formFooter">
-                    <a class="underlineHover" href="#">Forgot Password?</a>
-                </div>
+        <form th:action="@{/account/register}" method="post">
+            <label for="username"></label>
+            <input type="text" id="username" name="username" class="fadeIn second" placeholder="username">
+            <label for="password"></label>
+            <input type="text" id="password"  name="password" class="fadeIn third" placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="회원가입">
+        </form>
 
-            </div>
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
         </div>
-        <p class="login_footer">Form made by: Lion</p>
-    </form>
+
+    </div>
+</div>
+<p class="login_footer">From made by: Lion</p>
 
 
 

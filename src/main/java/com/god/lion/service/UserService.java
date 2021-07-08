@@ -23,8 +23,8 @@ public class UserService {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         user.setEnabled(true);//기본적으로 회원가입을 하면 활성화가 되겠금 해준다.
-        Role role = new Role();
-        role.setId(1l);
+        Role role = new Role();//자동으로 권한을 부여 하기 위해 권한을 부여해준다.
+        role.setId(1L);
         user.getRoles().add(role);
         return userRepository.save(user);
     }
