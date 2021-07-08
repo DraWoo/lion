@@ -35,17 +35,11 @@
 </head>
 <title>Lion_Login</title>
 <body>
-    <form th:action="@{/account/register}" method="post">
+    <form th:action="@{/account/login}" method="post">
         <div class="wrapper fadeInDown">
             <div id="formContent">
                 <!-- 유효하지않는 아이디와 패스워드 입력시 에러 경고창 start -->
-                <h2 class="active"> Sign In </h2>
-                <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                    유효하지 않은 아이디와 패스워드입니다.
-                </div>
-                <div th:if="${param.logout}" class="alert alert-primary" role="alert">
-                    You have been logged out.
-                </div>
+                <h2 class="inactive underlineHover">Sign Up </h2>
                 <!-- 유효하지않는 아이디와 패스워드 입력시 에러 경고창 end -->
                 <form>
                     <label for="username"></label>

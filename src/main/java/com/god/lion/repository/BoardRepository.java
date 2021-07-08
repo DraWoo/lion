@@ -18,4 +18,6 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
     //스프링에 Containing를 이용해서 제목,내용을 SQl에 Like 처럼 특정 문자가 포함된 것을 검색할 수 있다.
     Page<Board> findByTitleOrContentContaining(String title, String content, Pageable pageable);
+
+
 }

@@ -12,6 +12,8 @@ import javax.validation.constraints.Size;
 /*DB 연동을 위한 model 클래스*/
 @Entity//jpa 설정을 위해서 어노테이션 추가
 @Data //->getter,setter 정의 해서 외부해서 멤버변수를 꺼내 쓸 수 있도록 해줌
+
+//게피판 쓰기,수정,입력,조회 정보
 public class Board {
 
     @Id
