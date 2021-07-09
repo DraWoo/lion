@@ -30,6 +30,10 @@ nav{
     border-radius: 5px;
 
 }
+/*로그인/로그아웃/회원가입 홈버튼 스타일링*/
+.btn.btn-glow-dark.btn-dark:hover{
+    border: 1px solid white;
+}
 /*마우스 hover 설정*/
 .nav-item:hover{
 

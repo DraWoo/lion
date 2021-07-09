@@ -40,6 +40,7 @@ public class User {
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),//현재 테이블
             inverseJoinColumns = @JoinColumn(name = "role_id")//조인할 상대 테이블
+
     )
     //new ArrayList<>();-> 이부분을 생성해주는 이유는 기본적으로 생성하게 되면 nullpointerexception 생기기 때문에 기본적으로 해주면된다.
     private List<Role> roles = new ArrayList<>();//roles 멤버변수 생성
