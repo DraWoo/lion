@@ -2,10 +2,7 @@ package com.god.lion.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -26,5 +23,10 @@ public class Board {
     @Size(min = 2, max = 30, message = "제목은 2자이상 30자 이하입니다." )
     private String title;
     private String content;
+
+    //user 테이블에 사용자 정보를 게시판에 넣어주기 위한 로직
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

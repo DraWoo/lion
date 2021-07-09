@@ -70,7 +70,7 @@
                  <tr th:each="board : ${boards}">
                      <td th:text="${board.id}">Mark</td>
                      <td><a id="title__style" th:text="${board.title}" th:href="@{/board/form(id=${board.id})}"></a></td><!--파라미터로 글 번호까지 같이 전달 해준다 전달 예시는 -> @{/board/form(id=${board.id})}-->
-                     <td>Lion</td>
+                     <td th:text="${board.user.username}">Lion</td>
                  </tr>
                <!--  <tr>
                      <th scope="row">2</th>
