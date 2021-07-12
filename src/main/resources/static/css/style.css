@@ -71,6 +71,10 @@ h2{
 .form-group{
     padding:20px 0;
 }
+/*footer 스타일링*/
+.common__footer{
+    height: 100vh;
+}
 /*================media query 모바일===================*/
 /*
 ##Device = Most of the Smartphones Mobiles (Portrait)

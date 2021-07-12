@@ -45,5 +45,8 @@ public class User {
     //new ArrayList<>();-> 이부분을 생성해주는 이유는 기본적으로 생성하게 되면 nullpointerexception 생기기 때문에 기본적으로 해주면된다.
     private List<Role> roles = new ArrayList<>();//roles 멤버변수 생성
 
+    @OneToMany(mappedBy = "user")//서로가 서로를 조회할 수 있게 양방향 매핑
+    private List<Board> boards = new ArrayList<>();
+
 }
 

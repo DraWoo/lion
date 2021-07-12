@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-class BoarAPiController {
+class BoardApiController {
 
     @Autowired
     private BoardRepository repository;

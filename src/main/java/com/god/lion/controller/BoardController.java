@@ -3,15 +3,20 @@ package com.god.lion.controller;
 
 import com.god.lion.model.Board;
 import com.god.lion.repository.BoardRepository;
+import com.god.lion.service.BoardService;
 import com.god.lion.validator.BoardValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -22,6 +27,10 @@ public class BoardController {
 
     @Autowired //생성자 초기화
     private BoardRepository boardRepository;
+
+    @Autowired //생성자 초기화
+    private BoardService boardService;
+
 
     //    유효성 검사 클래스(BoardValidator)을 사용하기 위한 클래스 선언
     @Autowired
@@ -69,11 +78,14 @@ public class BoardController {
     //글 저장
     @PostMapping("/form")
     //model 클래스에서 지정한 사이즈가 min2 -> max30 에 부합되지 않는다면 true,false 결과 도출
-    public String greetingSubmit(@Valid Board board, BindingResult bindingResult){
+    public String postForm(@Valid Board board, BindingResult bindingResult, Authentication authentication){//Authentication ->사용자의 인증정보를 제공해주는 클래스를 받을수가잇다
         boardValidator.validate(board, bindingResult);
         if (bindingResult.hasErrors()){
             return "board/form";
         }
+        //Authentication a =  SecurityContextHolder.getContext().getAuthentication();//전역변수를 사용해서 가져올수도있다.
+        String username = authentication.getName();// 해당 로직으로 사용자 인증정보를 받을수가있다.
+        boardService.save(username, board);
         //jpa api-> save(메소드) ->저장 board로 전달
         boardRepository.save(board);
         ;// return "redirect:board/list"; 해주면 다시 조회하면으로 이동해서 조회를 하게 해준다

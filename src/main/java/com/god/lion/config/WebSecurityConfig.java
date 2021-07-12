@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 //.antMatchers("/", "/home(첫 화면 로그인페이지 같은 ").permitAll() 누구나 접급할 수 있는 페이지를 설정해준다.
-                    .antMatchers("/", "/account/register", "/css/**","/images/**").permitAll()
+                    .antMatchers("/", "/account/register", "/css/**","/images/**", "/api/**").permitAll()//"/api/**" ->postman으로 테스트를 하기 위한 로그인 없이 요청가능하도록 매핑정보를 넣어줌
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
