@@ -1,5 +1,6 @@
 package com.god.lion.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -35,6 +36,7 @@ public class User {
     MariaDB의 외래키 테이블 생성 후 참조테이블을 연결해준다.
 */
     //다대다 조인 매핑 ->양방향 매핑이라고도 한다.
+    @JsonIgnore//json에 테스트시 표시하지 말아라 -> 라는 어노테이션
     @ManyToMany//(cascade = )->옵션을 설정하면 조인테이블에도 동일하게 변경사항이 저장된다.
     @JoinTable(
             name = "user_role",
@@ -56,8 +58,10 @@ public class User {
 //            PK(JoinColumn)값이 NULL로 변한 자식은 고아객체라고 하여 연결된 점이 없는 객체이다.
 //    orphanRemoval옵션은 바로 이 고아객체를 삭제해주는 역활
 //orphanRemoval(고아라는 뜻)-> 즉 부모가 없는 데이터는 다 지운다
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)//서로가 서로를 조회할 수 있게 양방향 매핑
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)//서로가 서로를 조회할 수 있게 양방향 매핑
     //cascade를 써줌으로써 삭제시 사용자와 사용자의 컨텐츠가 모두 삭제가 된다.
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnore//보드정보도 넘겨주지 않는다 ->테스트->성능상의 이슈를 해결
     private List<Board> boards = new ArrayList<>();
 
 }
