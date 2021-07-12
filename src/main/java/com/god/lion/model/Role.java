@@ -1,5 +1,6 @@
 package com.god.lion.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,5 +20,6 @@ public class Role {
     private String name;
 
     @ManyToMany(mappedBy = "roles")//mapped -> user테이블에 설정에 맞게 설정을 해준다.
+    @JsonIgnore
     private List<User> users;
 }

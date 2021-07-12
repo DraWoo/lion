@@ -22,6 +22,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                //.csrf
+                //->사이트 간 요청 위조는 웹사이트 취약점 공격의 하나로,
+                // 사용자가 자신의 의지와는 무관하게 공격자가 의도한 행위를 특정 웹사이트에 요청하게 하는 공격을 말한다.
+                // 유명 경매 사이트인 옥션에서 발생한 개인정보 유출 사건에서 사용된 공격 방식 중 하나다
+                .csrf().disable()//디스에이블 하면 보안체크를 하지않음.
                 .authorizeRequests()
                 //.antMatchers("/", "/home(첫 화면 로그인페이지 같은 ").permitAll() 누구나 접급할 수 있는 페이지를 설정해준다.
                     .antMatchers("/", "/account/register", "/css/**","/images/**", "/api/**").permitAll()//"/api/**" ->postman으로 테스트를 하기 위한 로그인 없이 요청가능하도록 매핑정보를 넣어줌

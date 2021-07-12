@@ -1,5 +1,6 @@
 package com.god.lion.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Board {
     //user 테이블에 사용자 정보를 게시판에 넣어주기 위한 로직
     @ManyToOne()
     @JoinColumn(name = "user_id")//양방향 매핑을 할때는 여기다가 많이 소유하는 쪽을(컬럼)적어준다.
+    @JsonIgnore
     private User user;
 
 }

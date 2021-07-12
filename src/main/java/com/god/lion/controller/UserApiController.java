@@ -1,6 +1,7 @@
 package com.god.lion.controller;
 
 
+import com.god.lion.model.Board;
 import com.god.lion.model.User;
 import com.god.lion.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,12 @@ class UserApiController {
                 .map(user -> {
 //                    user.setTitle(newUser.getTitle());
 //                    user.setContent(newUser.getContent());
+//                    user.setBoards(newUser.getBoards());
+                    user.getBoards().clear();//기존의 데이터는 전부 삭제를 하고
+                    user.getBoards().addAll(newUser.getBoards());//현재 받은 데이터로 전부다 업데이트 시켜라라는 로직
+                    for(Board board : user.getBoards()){
+                        board.setUser(user);
+                    }
                     return repository.save(user);
                 })
                 .orElseGet(() -> {
