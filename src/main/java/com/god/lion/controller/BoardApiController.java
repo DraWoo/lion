@@ -38,36 +38,36 @@ class BoardApiController {
     }
 
     //전체조회(sele
-    @PostMapping("/baords")
-    Board newBaord(@RequestBody Board newBaord) {
-        return repository.save(newBaord);
+    @PostMapping("/boards")
+    Board newBoard(@RequestBody Board newBoard) {
+        return repository.save(newBoard);
     }
 
     // Single item
     //값을 지정한 추가(insert문)
-    @GetMapping("/baords/{id}")
+    @GetMapping("/boards/{id}")
     Board one(@PathVariable Long id) {
 
         return repository.findById(id).orElse(null);
     }
 
-    @PutMapping("/baords/{id}")
-    Board replaceBaord(@RequestBody Board newBaord, @PathVariable Long id) {
+    @PutMapping("/boards/{id}")
+    Board replaceBoard(@RequestBody Board newBoard, @PathVariable Long id) {
 
         return repository.findById(id)
-                .map(baord -> {
-                    baord.setTitle(newBaord.getTitle());
-                    baord.setContent(newBaord.getContent());
-                    return repository.save(baord);
+                .map(board -> {
+                    board.setTitle(newBoard.getTitle());
+                    board.setContent(newBoard.getContent());
+                    return repository.save(board);
                 })
                 .orElseGet(() -> {
-                    newBaord.setId(id);
-                    return repository.save(newBaord);
+                    newBoard.setId(id);
+                    return repository.save(newBoard);
                 });
     }
 
-    @DeleteMapping("/baords/{id}")
-    void deleteBaord(@PathVariable Long id) {
+    @DeleteMapping("/boards/{id}")
+    void deleteBoard(@PathVariable Long id) {
         repository.deleteById(id);
     }
 
