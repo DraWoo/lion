@@ -60,8 +60,8 @@ public class User {
 //orphanRemoval(고아라는 뜻)-> 즉 부모가 없는 데이터는 다 지운다
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)//서로가 서로를 조회할 수 있게 양방향 매핑
     //cascade를 써줌으로써 삭제시 사용자와 사용자의 컨텐츠가 모두 삭제가 된다.
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    @JsonIgnore//보드정보도 넘겨주지 않는다 ->테스트->성능상의 이슈를 해결
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    @JsonIgnore//보드정보도 넘겨주지 않는다 ->테스트->성능상의 이슈를 해결
     private List<Board> boards = new ArrayList<>();
 
 }

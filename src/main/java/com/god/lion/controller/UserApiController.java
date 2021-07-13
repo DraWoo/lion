@@ -4,6 +4,7 @@ package com.god.lion.controller;
 import com.god.lion.model.Board;
 import com.god.lion.model.User;
 import com.god.lion.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,17 +12,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@Slf4j//로그를 찍어볼 수 있는 어노테이션
 class UserApiController {
 
     @Autowired
     private UserRepository repository;
 
-    //전체 조회 (select * from mydb)
     @GetMapping("/users")
-    //사용자 검색
     List<User> all(){
-
-        return repository.findAll();
+        List<User> users = repository.findAll();
+        log.debug("getBoard().size() 호출전");
+        log.debug("getBoard().size() : {}", users.get(0).getBoards().size());
+        log.debug("getBoard().size() 호출후");
+        return users;
     }
 
     //전체조회(sele
