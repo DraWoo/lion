@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--//thymeleaf 선언-->
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"><!--// namespace-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"><!--// namespace-->
 <head> <!--공통html 코드에서 파라미터값을 받아오면 됨-->
     <!--th:replace="fragment/common :: head('게시판')"-->
     <!-- Required meta tags -->
@@ -67,10 +67,26 @@
                  <!--글 쓰기 버튼-->
                  <div class="btn-left">
                      <a type="button" class="btn btn-outline-primary" th:href="@{/board/list}">취소</a>
+                     <button type="button" class="btn btn-outline-primary" sec:authorize="hasRole('ROLE_ADMIN')" th:onclick="|deleteBoard(*{id})|">삭제</button>
                      <button type="submit" class="btn btn-outline-primary">저장</button><!--summit-> DB전송-->
                  </div>
              </form>
          </div>
+            <footer th:replace="fragment/common :: footer"></footer>
+            <script>
+                function deleteBoard(id) {
+                    //DELETE /api/boards/{id}
+                    $.ajax({
+                        url: '/api/boards/' + id,
+                        type: 'DELETE',
+                        success: function(result) {
+                            console.log('result', result);
+                            alert('삭제됐습니다.');
+                            window.location.href = '/board/list';
+                        }
+                    });
+                }
+            </script>
 
 </body>
 
